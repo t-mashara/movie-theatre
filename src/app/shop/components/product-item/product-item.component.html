@@ -1,0 +1,17 @@
+<div *ngIf="product" class="p-item">
+  <div class="description">
+    <div class="name">{{product.name}}</div>
+    <div class="price">{{product.price | currency:'USD'}}</div>
+  </div>
+  <div class="promo">
+    <span *ngIf="product.promo">Buy {{product.promo.requiredAmount}} for the price of {{product.promo.priceAmount}}!</span>
+  </div>
+  <div class="actions">
+    <div *ngIf="!quantity; else cartActions" class="btn-wide" (click)="add()">Add to cart</div>
+    <ng-template #cartActions>
+      <div (click)="remove()" class="btn-round">-</div>
+      <div class="quantity">{{quantity}}</div>
+      <div (click)="add()" class="btn-round">+</div>
+    </ng-template>
+  </div>
+</div>

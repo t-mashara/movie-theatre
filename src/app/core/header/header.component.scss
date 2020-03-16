@@ -16,3 +16,24 @@ nav {
 li, .cart {
   cursor: pointer;
 }
+
+.cart {
+  width: 20px;
+  position: relative;
+}
+
+.badge {
+  color: white;
+  top: -10px;
+  right: -10px;
+  position: absolute;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: red;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+}

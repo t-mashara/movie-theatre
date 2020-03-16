@@ -8,7 +8,9 @@ import {AssociativeArray} from '../model/AssociativeArray';
 import {IProductsService} from '../model/IProductsService';
 import {toAssociativeArray} from '../../utils/toAssociativeArray';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductsService implements IProductsService {
   private readonly $data: BehaviorSubject<AssociativeArray<Product>>;
 

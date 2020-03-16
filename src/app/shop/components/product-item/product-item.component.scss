@@ -1,0 +1,45 @@
+@import 'src/assets/constants';
+
+.p-item {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  align-items: center;
+}
+
+.promo {
+  height: 24px;
+  font-size: 14px;
+}
+
+.btn-wide, .btn-round{
+  background: $accent;
+  cursor: pointer;
+}
+
+.btn-round {
+  border-radius: 20px;
+  padding: 5px 12px;
+}
+
+.btn-wide {
+  flex: 1;
+  padding: 5px 15px;
+  text-align: center;
+  border-radius: 3px;
+}
