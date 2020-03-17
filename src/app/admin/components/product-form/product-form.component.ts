@@ -10,8 +10,8 @@ import {Product} from '../../../core/model/Product';
 export class ProductFormComponent implements OnChanges {
   form: FormGroup;
   @Input() product: Product;
-  @Output() onCancel = new EventEmitter<void>();
-  @Output() onSubmit = new EventEmitter<Product>();
+  @Output() cancelled = new EventEmitter<void>();
+  @Output() submitted = new EventEmitter<Product>();
 
   constructor(
     private readonly formBuilder: FormBuilder
@@ -41,6 +41,6 @@ export class ProductFormComponent implements OnChanges {
     if (!(value.promo.requiredAmount && value.promo.priceAmount)) {
       delete product.promo;
     }
-    this.onSubmit.emit(product);
+    this.submitted.emit(product);
   }
 }
