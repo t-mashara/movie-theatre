@@ -1,27 +1,12 @@
-import {Inject, Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {CartItem, getPrice} from '../model/CartItem';
-import {Product} from '../model/Product';
 import {map} from 'rxjs/operators';
+import {getSum} from '../../utils/getSum';
+import {CartItem} from '../model/CartItem';
+import {Inject, Injectable} from '@angular/core';
 import {ProductsService} from './products.service';
 import {AssociativeArray} from '../model/AssociativeArray';
 import {IProductsService} from '../model/IProductsService';
-
-const mapQuantities = ([products, quantities]: [Product[], AssociativeArray<number>]): CartItem[] => {
-  return products
-    .filter(({ id }) => quantities[id])
-    .map((p: CartItem) => {
-      const cartItem = { ...p, quantity: quantities[p.id]};
-      cartItem.total = getPrice(cartItem);
-      return cartItem;
-    });
-};
-
-const collectPrices = (items: CartItem[]): number =>
-  items.reduce((sum, { total }) => sum + total, 0);
-
-const collectQuantities = (items: CartItem[]): number =>
-  items.reduce((sum, { quantity }) => sum + quantity, 0);
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {productsToCartItems} from '../../utils/productsToCartItems';
 
 @Injectable({
   providedIn: 'root'
@@ -64,15 +49,19 @@ export class CartService {
 
   get list(): Observable<CartItem[]> {
     return combineLatest([this.productsService.list, this.data]).pipe(
-      map(mapQuantities)
+      map(productsToCartItems)
     );
   }
 
   get totalPrice(): Observable<number> {
-    return this.list.pipe(map(collectPrices));
+    return this.list.pipe(
+      map(getSum.bind(null, 'total'))
+    );
   }
 
   get totalCount(): Observable<number> {
-    return this.list.pipe(map(collectQuantities));
+    return this.list.pipe(
+      map(getSum.bind(null, 'quantity'))
+    );
   }
 }

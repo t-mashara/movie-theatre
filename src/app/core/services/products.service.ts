@@ -1,8 +1,8 @@
 import {map} from 'rxjs/operators';
 import {Product} from '../model/Product';
-import {BehaviorSubject, Observable} from 'rxjs';
 import {getUniqID} from '../../utils/getUniqID';
 import {PRODUCTS_MOCK} from '../mocks/products';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Inject, Injectable, Optional} from '@angular/core';
 import {AssociativeArray} from '../model/AssociativeArray';
 import {IProductsService} from '../model/IProductsService';
