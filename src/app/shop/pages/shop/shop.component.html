@@ -1,7 +1,7 @@
 <div class="page shop">
   <mt-product-item *ngFor="let item of (products | async)"
                    [product]="item"
-                   [quantity]="quantities[item.id]"
+                   [quantity]="(quantities | async)[item.id]"
                    class="product">
   </mt-product-item>
 </div>

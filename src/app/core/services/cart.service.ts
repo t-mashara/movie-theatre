@@ -12,6 +12,7 @@ const mapQuantities = ([products, quantities]: [Product[], AssociativeArray<numb
     .filter(({ id }) => quantities[id])
     .map((p: CartItem) => {
       p.quantity = quantities[p.id];
+      p.total = getPrice(p);
       return p;
     });
 };
@@ -26,10 +27,14 @@ const collectQuantities = (items: CartItem[]): number =>
   providedIn: 'root'
 })
 export class CartService {
-  private $quantities = new BehaviorSubject<AssociativeArray<number>>({});
+  private $quantities = new BehaviorSubject<AssociativeArray<number>>({
+    [Object.keys(this.productsService.value)[0]]: 1,
+    [Object.keys(this.productsService.value)[1]]: 1,
+    [Object.keys(this.productsService.value)[2]]: 1,
+  });
 
   constructor(
-    @Inject(ProductsService) private readonly productsService: IProductsService
+    @Inject(ProductsService) private readonly productsService: ProductsService
   ) {}
 
   add(id: string): void {
@@ -45,6 +50,15 @@ export class CartService {
     } else if (value[id]) {
       value[id] -= 1;
     }
+    this.$quantities.next({...value});
+  }
+
+  removeItem(id: string): void {
+    const { value } = this.$quantities;
+    if (!(id in value)) {
+      return;
+    }
+    delete value[id];
     this.$quantities.next({...value});
   }
 

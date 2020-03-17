@@ -8,7 +8,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  private readonly count = this.cartService.totalCount;
+  readonly count = this.cartService.totalCount;
   constructor(
     private readonly cartService: CartService
   ) {}

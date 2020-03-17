@@ -1,4 +1,4 @@
-@import 'src/assets/constants';
+@import '../../../../assets/styles/constants';
 
 .p-item {
   border: 1px solid black;
@@ -27,14 +27,9 @@
   font-size: 14px;
 }
 
-.btn-wide, .btn-round{
+.btn-wide {
   background: $accent;
   cursor: pointer;
-}
-
-.btn-round {
-  border-radius: 20px;
-  padding: 5px 12px;
 }
 
 .btn-wide {

@@ -23,7 +23,11 @@ describe('ProductsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be initialized with empty data', done => {
+  it('should be initialized with empty object', () => {
+    expect(service.value).toEqual({});
+  });
+
+  it('should be initialized with empty array', (done) => {
     service.list.subscribe(list => {
       expect(list).toEqual([]);
       done();
