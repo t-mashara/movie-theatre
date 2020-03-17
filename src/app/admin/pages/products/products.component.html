@@ -8,8 +8,8 @@
    </div>
   <mt-product-form *ngIf="editing"
                    [product]="editing"
-                   (onCancel)="onCancel()"
-                   (onSubmit)="onSubmit($event)">
+                   (cancelled)="onCancel()"
+                   (submitted)="onSubmit($event)">
   </mt-product-form>
   <mt-product *ngFor="let item of (list | async)"
               [product]="item" (edit)="edit($event)" (delete)="delete($event)">
