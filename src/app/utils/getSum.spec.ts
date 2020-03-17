@@ -1,4 +1,4 @@
-import {getSum} from './collect';
+import {getSum} from './getSum';
 
 describe('getSum', () => {
   const testArray = [
