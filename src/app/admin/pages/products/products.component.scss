@@ -1,0 +1,22 @@
+@import "src/assets/styles/constants";
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add {
+  background: $accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  svg {
+    display: inline-block;
+    width: 18px;
+    margin-left: 5px;
+  }
+}

@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'cart',
     component: CartComponent,
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(r => r.AdminModule),
+  }
 ];
 
 @NgModule({

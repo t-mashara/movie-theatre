@@ -1,4 +1,4 @@
-<div class="cart page">
+<section class="page cart">
   <h1 class="title">Cart</h1>
   <section *ngIf="(length | async); else empty">
     <mt-cart-table [cartItems]="list | async"></mt-cart-table>
@@ -8,4 +8,4 @@
   <ng-template #empty>
     <p>Your cart is empty</p>
   </ng-template>
-</div>
+</section>

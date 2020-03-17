@@ -1,0 +1,34 @@
+.product {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+
+.id {
+  flex: 0 0 30%;
+}
+
+.name {
+  flex: 0 0 15%;
+}
+
+.price {
+  flex: 0 0 10%;
+}
+
+.promo {
+  flex: 0 0 30%;
+}
+
+.actions {
+  flex: 0 0 25%;
+  display: inline-flex;
+}
+
+.edit, .delete {
+  width: 18px;
+  cursor: pointer;
+  margin-right: 5px;
+}

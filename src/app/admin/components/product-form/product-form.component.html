@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+  <label *ngIf="product.id">
+    ID: {{product.id}}
+  </label>
+  <label for="name">
+    *Name
+    <input id="name" type="text" formControlName="name"/>
+  </label>
+  <label for="price">
+    *Price
+    <input id="price" type="number" formControlName="price"/>
+  </label>
+  <ng-container formGroupName="promo">
+    <label for="requiredAmount">
+      Required amount
+      <input id="requiredAmount" type="number" formControlName="requiredAmount"/>
+    </label>
+
+    <label for="priceAmount">
+      Price amount
+      <input id="priceAmount" type="number" formControlName="priceAmount"/>
+    </label>
+  </ng-container>
+
+  <div class="buttons">
+    <button type="button" (click)="onCancel.emit()">Cancel</button>
+    <button type="submit" [disabled]="!form.valid" (click)="save()">Save</button>
+  </div>
+</form>
